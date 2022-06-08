@@ -29,8 +29,7 @@ Home.getInitialProps = async ({ query, req, res }: any) => {
     if (link?.content?.destination) {
         res.writeHead(307, {
             Location: `${link?.content?.destination}${req.url?.split('?')[1] ? `?${req.url.split('?')[1]}` : ''}`
-        });
-        fetch(`https://api.waya.one/links/${query.id}`, {
+        fetch(`https://api.waya.one/links/${query.path}`, {
             method: 'PATCH',
             headers: {
                 authorization: process.env?.token || ''
